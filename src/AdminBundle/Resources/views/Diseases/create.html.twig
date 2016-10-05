@@ -3,24 +3,25 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <a href="{{ path('patient_list') }}">Back</a>
-                <h2 class="page-header">Patient Details</h2>
+                <h2 class="page-header">Add Diseases</h2>
             </div>
         </div>
-
+        <div class="row panel panel-default">
             <div class="panel-body col-lg-12">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Personal Details
                         </div>
-                        {{ patient.firstName  }}
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
                     </div>
                 </div>
             </div>
         </div>
-
-
+    </div>
+    <!-- /#page-wrapper -->
 {% endblock %}
 {% block stylesheets %}
 {% endblock %}

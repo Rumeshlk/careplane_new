@@ -35,16 +35,16 @@
                             <tbody>
                             {% for patients in patient %}
                             <tr class="odd gradeX">
-                                <td>Tim</td>
-                                <td>Kross</td>
-                                <td>07/08/2016</td>
-                                <td>123456789</td>
-                                <td>Tim Kross</td>
+                                <td>{{ patients.firstName }}</td>
+                                <td>{{ patients.lastName }}</td>
+                                <td>{{ patients.dob|date('F,j,Y') }}</td>
+                                <td>{{ patients.bsn }}</td>
+                                <td>{{ patients.therapist }}</td>
                                 <td class="text-center"><input type="checkbox"></td>
                                 <td class="text-center">
-                                    <a><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a> |
-                                    <a><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a> |
-                                    <a><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+                                    <a href="{{ path('patient_edit', {'id': patients.id}) }}"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a> |
+                                    <a href="{{ path('patient_delete', {'id': patients.id}) }}"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a> |
+                                    <a href="{{ path('patient_detail', {'id': patients.id}) }}"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                             {% endfor %}

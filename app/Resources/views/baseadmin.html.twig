@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -289,10 +289,10 @@
                         <a href="{{ path('laboratory') }}"><i class="fa fa-flask fa-fw"></i>Laboratory </a>
                     </li>
                     <li>
-                        <a href="{{ path('patient_list') }}"><i class="fa fa-user-md fa-fw"></i>Therapist </a>
+                        <a href="{{ path('therapist_list') }}"><i class="fa fa-user-md fa-fw"></i>Therapist </a>
                     </li>
                     <li>
-                        <a href="{{ path('patient_list') }}"><i class="fa fa-plus-square fa-fw"></i>Diseases</a>
+                        <a href="{{ path('diseases_list') }}"><i class="fa fa-plus-square fa-fw"></i>Diseases</a>
                     </li>
                     <li>
                         <a href="{{ path('patient_list') }}"><i class="fa fa-lemon-o fa-fw"></i>Supplements</a>
@@ -322,7 +322,14 @@
         <!-- /.navbar-static-side -->
     </nav>
     </nav>
+    <div class = "row">
+        <div class="col-md-12">
+    {% for flash_message in app.session.flashBag.get('notice') %}
+    {{ flash_message }}
+    {% endfor %}
     {% block body %}{% endblock %}
+        </div>
+    </div>
     {% block javascripts %}
         <!-- jQuery -->
         <script src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>
