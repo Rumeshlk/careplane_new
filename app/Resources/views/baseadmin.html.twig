@@ -360,7 +360,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">Recommendations</a>
+                                        <a href="{{ path('recommendation_list') }}">Recommendations</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -484,7 +484,18 @@
     {% for flash_message in app.session.flashBag.get('notice') %}
         {{ flash_message }}
     {% endfor %}
-    {% block body %}{% endblock %}
+
+    {% for msg in app.session.flashBag.get('success') %}
+        <div id="page-wrapper" style="min-height: 0% !important; border-radius: 0px !important; margin-bottom: 0px !important;">
+            <div class="alert alert-success">
+                {{ msg }}
+            </div>
+        </div>
+    {% endfor %}
+
+    {% block body %}
+    {% endblock %}
+
     {% block javascripts %}
         <!-- jQuery -->
         <script src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>

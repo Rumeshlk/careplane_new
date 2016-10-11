@@ -52,9 +52,42 @@ class TherapyController extends Controller
     /**
      * @Route("/therapy/edit/{id}", name="therapy_edit")
      */
-    public function editAction($id)
+    public function editAction($id, Request $request)
     {
-        return $this->render('AdminBundle:Therapy:edit.html.twig', array());
+
+        $em = $this->getDoctrine()->getManager();
+
+        $therapy = $em->getRepository('AdminBundle:Therapy')->find($id);
+
+        $form = $this->createFormBuilder($therapy)
+            ->add('name', TextType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+            ->add('description', TextareaType::class, array('attr' => array('class' => 'form-control', 'height' => '5', 'resize' => 'false', 'style' => 'margin-bottom:15px')))
+            ->add('Update', SubmitType::class, array('label' => 'Update', 'attr' => array('class' => 'btn btn-primary', 'style' => 'margin-bottom:15px')))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            //get submitted data
+            $name = $form['name']->getData();
+            $description = $form['description']->getData();
+
+
+            $therapyToUpdate = $em->getRepository('AdminBundle:Therapy')->find($id);
+
+            $therapyToUpdate->setFirstName($name);
+            $therapyToUpdate->setLastName($description);
+
+            $em->persist($therapyToUpdate);
+
+            $em->flush();
+
+            $this->addFlash(
+                'notice', 'Therapy updated successfully'
+            );
+            return $this->redirectToRoute('therapy_list');
+        }
+        return $this->render('AdminBundle:Therapy:edit.html.twig', array('form' => $form->createView()));
     }
 
     /**
@@ -71,7 +104,16 @@ class TherapyController extends Controller
      */
     public function deleteAction($id)
     {
-        return $this->render('AdminBundle:Therapy:delete.html.twig', array());
+        $em = $this->getDoctrine()->getManager();
+        $therapy = $em->getRepository('AdminBundle:Therapy')->find($id);
+
+        $em->remove($therapy);
+        $em->flush();
+
+        $this->addFlash(
+            'notice', 'Therapy Deleted'
+        );
+        return $this->redirectToRoute('therapy_list');
     }
 
     /**
