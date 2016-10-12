@@ -1,0 +1,65 @@
+{% extends 'baseadmin.html.twig' %}
+{% block body %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1><a href="{{ path('recommendation_create') }}">
+                        <button type="button" class="btn btn-success"><i class="fa fa-stethoscope fa-fw"></i> Add a
+                            Recommendation
+                        </button>
+                    </a></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Recommendations List
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper">
+                            <table width="100%" class="table table-striped table-bordered table-hover"
+                                   id="dataTables-example">
+                                <thead>
+                                <tr>
+                                    <th>Recommendation Name</th>
+                                    <th>Description</th>
+                                    <th>Select</th>
+                                    <th>Functions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for recommendation in recommendationList %}
+                                    <tr class="odd gradeX">
+                                        <td>{{ recommendation.name }}</td>
+                                        <td>{{ recommendation.description }}</td>
+                                        <td class="text-center"><input type="checkbox"></td>
+                                        <td class="text-center">
+                                            <a href="{{ path('therapy_edit', {'id': recommendation.id}) }}"><i
+                                                        class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a>
+                                            |
+                                            <a href="{{ path('therapy_delete', {'id': recommendation.id}) }}"><i
+                                                        class="fa fa-trash fa-lg" aria-hidden="true"></i></a> |
+                                            <a href="{{ path('therapy_detail', {'id': recommendation.id}) }}"><i
+                                                        class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <!-- /.row -->
+        </div>
+    </div>
+    <!-- /#page-wrapper -->
+{% endblock %}
