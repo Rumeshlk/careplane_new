@@ -60,4 +60,37 @@ class RecommendationController extends Controller
 
 
     }
+
+
+    /**
+     * @Route("/recommendation/edit/{id}", name="recommendation_edit")
+     */
+    public function editAction(Request $request, Recommendation $recommendation)
+    {
+        $form = $this->createForm(RecommendationFormType::class, $recommendation);
+
+        //only handles data on POST
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $recommendation = $form->getData();
+
+            $em = $this->getDoctrine()->getEntityManager();
+
+            $em->persist($recommendation);
+
+            $em->flush();
+
+            $this->addFlash('success', 'Recommendation was successfully updated');
+
+            return $this->redirectToRoute('recommendation_list');
+        }
+
+        return $this->render('Recommendation/edit.html.twig', [
+            'recommendationForm' => $form->createView()
+        ]);
+
+
+    }
+
 }
