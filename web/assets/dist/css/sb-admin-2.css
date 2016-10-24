@@ -85,15 +85,6 @@ body {
     left: auto;
 }
 
-.sidebar .sidebar-nav.navbar-collapse {
-    padding-right: 0;
-    padding-left: 0;
-    background-color: #78ccbf;
-}
-.sidebar:hover{
-    color: #d9534f;
-}
-
 .sidebar .sidebar-search {
     padding: 15px;
 }
@@ -379,15 +370,31 @@ table.dataTable thead .sorting:after {
     font-weight: 100 !important;
 }
 
-.nav>li>a:focus,.nav>li>a:hover {
+/*============================================================================*/
+/*Side Bar New Styles (by DRD)*/
+/*============================================================================*/
+
+.sidebar .sidebar-nav .panel .panel-heading {
+    background-color: #78ccbf;
+    color: #efefef;
+    border-radius: 0px;
+}
+
+.sidebar .sidebar-nav .panel{
+    margin: 0px;
+    border-radius: 0px;
+}
+
+.sidebar .sidebar-nav .panel .panel-heading:hover {
     text-decoration: none;
     background-color: lightcoral !important;
     color: #ffffff;
 }
 
-.sidebar-nav>ul>li>a{
-    color: #ffffff;
+.sidebar .sidebar-nav .panel a:focus ,.sidebar .sidebar-nav .panel a:hover{
+    text-decoration: none;
 }
+
 .active {
     outline: 0;
     color: lightcoral !important;
