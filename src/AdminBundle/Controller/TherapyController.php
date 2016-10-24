@@ -48,7 +48,7 @@ class TherapyController extends Controller
             return $this->redirectToRoute('therapy_list');
         }
 
-        return $this->render('Recommendation/create.html.twig', [
+        return $this->render('Therapy/create.html.twig', [
             'therapyForm' => $form->createView()
         ]);
 
