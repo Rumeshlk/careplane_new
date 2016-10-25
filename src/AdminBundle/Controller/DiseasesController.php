@@ -25,7 +25,7 @@ class DiseasesController extends Controller
      */
     public function showAction(){
         $laboratory_list = $this->getDoctrine()->getRepository('AdminBundle:Diseases')->findAll();
-        return $this->render('AdminBundle:Diseases:diseases.html.twig',array('diseases' => $laboratory_list ));
+        return $this->render('Diseases/diseases.html.twig',array('diseases' => $laboratory_list ));
     }
 
     /**
@@ -49,7 +49,7 @@ class DiseasesController extends Controller
             DIE('Submited');
         }
 
-        return $this->render('AdminBundle:Diseases:create.html.twig',array('form' => $form->createView()));
+        return $this->render('Diseases/create.html.twig',array('form' => $form->createView()));
     }
 
 }

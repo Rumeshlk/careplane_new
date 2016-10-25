@@ -24,7 +24,7 @@ class PackageController extends Controller
      */
     public function showAction(){
         $package_list = $this->getDoctrine()->getRepository('AdminBundle:Package')->findAll();
-        return $this->render('AdminBundle:Package:package.html.twig',array('package' => $package_list ));
+        return $this->render('Package/package.html.twig',array('package' => $package_list ));
     }
 
     /**
@@ -61,7 +61,7 @@ class PackageController extends Controller
             return $this->redirectToRoute('package');
         }
 
-        return $this->render('AdminBundle:Package:create.html.twig',array('form' => $form->createView()));
+        return $this->render('Package/create.html.twig',array('form' => $form->createView()));
     }
 
     /**
@@ -100,7 +100,7 @@ class PackageController extends Controller
             );
             return $this->redirectToRoute('package');
         }
-        return $this->render('AdminBundle:Package:edit.html.twig', array('form' => $form->createView()));
+        return $this->render('Package/edit.html.twig', array('form' => $form->createView()));
     }
 
     /**

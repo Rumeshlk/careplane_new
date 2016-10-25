@@ -25,7 +25,7 @@ class LaboratoryController extends Controller
     public function showAction()
     {
         $laboratory_list = $this->getDoctrine()->getRepository('AdminBundle:Laboratory')->findAll();
-        return $this->render('AdminBundle:Laboratory:laboratory.html.twig', array('laboratory' => $laboratory_list));
+        return $this->render('Laboratory/laboratory.html.twig', array('laboratory' => $laboratory_list));
     }
 
     /**
@@ -46,7 +46,7 @@ class LaboratoryController extends Controller
             DIE('Submited');
         }
 
-        return $this->render('AdminBundle:Laboratory:create.html.twig', array('form' => $form->createView()));
+        return $this->render('Laboratory/create.html.twig', array('form' => $form->createView()));
     }
 
     /**
@@ -84,7 +84,7 @@ class LaboratoryController extends Controller
             );
             return $this->redirectToRoute('laboratory');
         }
-        return $this->render('AdminBundle:Laboratory:edit.html.twig', array('form' => $form->createView()));
+        return $this->render('Laboratory/edit.html.twig', array('form' => $form->createView()));
 
     }
 }

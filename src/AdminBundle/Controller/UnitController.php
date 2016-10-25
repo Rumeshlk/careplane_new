@@ -24,7 +24,7 @@ class UnitController extends Controller
     public function showAction()
     {
         $units_list = $this->getDoctrine()->getRepository('AdminBundle:Units')->findAll();
-        return $this->render('AdminBundle:Units:units.html.twig', array('unit' => $units_list));
+        return $this->render('Units/units.html.twig', array('unit' => $units_list));
     }
 
     /**
@@ -64,7 +64,7 @@ class UnitController extends Controller
             return $this->redirectToRoute('units');
         }
 
-        return $this->render('AdminBundle:Units:create.html.twig', array('form' => $form->createView()));
+        return $this->render('Units/create.html.twig', array('form' => $form->createView()));
     }
 
     /**
@@ -107,7 +107,7 @@ class UnitController extends Controller
             );
             return $this->redirectToRoute('units');
         }
-        return $this->render('AdminBundle:Units:edit.html.twig', array('form' => $form->createView()));
+        return $this->render('Units/edit.html.twig', array('form' => $form->createView()));
     }
 
     /**

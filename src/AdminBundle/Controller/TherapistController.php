@@ -21,7 +21,7 @@ class TherapistController extends Controller
      */
     public function showAction(){
         $laboratory_list = $this->getDoctrine()->getRepository('AdminBundle:Therapist')->findAll();
-        return $this->render('AdminBundle:Therapist:therapist.html.twig',array('therapist' => $laboratory_list ));
+        return $this->render('Therapist/therapist.html.twig',array('therapist' => $laboratory_list ));
     }
 
     /**
@@ -45,7 +45,7 @@ class TherapistController extends Controller
             DIE('Submited');
         }
 
-        return $this->render('AdminBundle:Therapist:create.html.twig',array('form' => $form->createView()));
+        return $this->render('Therapist/create.html.twig',array('form' => $form->createView()));
     }
 
 }

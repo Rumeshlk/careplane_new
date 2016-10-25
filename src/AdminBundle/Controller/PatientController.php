@@ -18,10 +18,22 @@ class PatientController extends Controller
     /**
      * @Route("/patient", name = "patient_list")
      */
-    public function listAction()
+    public function listAction(Request $request)
     {
         $patient_list = $this->getDoctrine()->getRepository('AdminBundle:Patient')->findAll();
-        return $this->render('AdminBundle:Patient:index.html.twig', array('patient' => $patient_list));
+
+        /**
+         * @var $paginator \knp\component\pager\paginator;
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $patient_list,
+            $request->query->getInt('page',1),
+            $request->query->getInt('limit',2)
+
+        );
+
+        return $this->render('Patient/index.html.twig', array('patient' => $result));
     }
 
     /**
@@ -109,7 +121,7 @@ class PatientController extends Controller
             return $this->redirectToRoute('patient_list');
         }
 
-        return $this->render('AdminBundle:Patient:create.html.twig', array('form' => $form->createView()));
+        return $this->render('Patient/create.html.twig', array('form' => $form->createView()));
     }
 
     /**
@@ -218,7 +230,7 @@ class PatientController extends Controller
             );
             return $this->redirectToRoute('patient_list');
         }
-        return $this->render('AdminBundle:Patient:edit.html.twig', array('form' => $form->createView()));
+        return $this->render('Patient/edit.html.twig', array('form' => $form->createView()));
     }
 
     /**
@@ -227,7 +239,7 @@ class PatientController extends Controller
     public function detailAction($id)
     {
         $patient = $this->getDoctrine()->getRepository('AdminBundle:Patient')->find($id);
-        return $this->render('AdminBundle:Patient:detail.html.twig', array('patient' => $patient));
+        return $this->render('Patient/detail.html.twig', array('patient' => $patient));
     }
 
     /**
