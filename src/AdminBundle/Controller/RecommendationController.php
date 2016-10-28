@@ -22,7 +22,7 @@ class RecommendationController extends Controller
      */
     public function listFunction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $recommendations = $em->getRepository('AdminBundle:Recommendation')->findAll();
 
@@ -43,7 +43,7 @@ class RecommendationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $recommendation = $form->getData();
 
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
 
             $em->persist($recommendation);
 
@@ -75,7 +75,7 @@ class RecommendationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $recommendation = $form->getData();
 
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
 
             $em->persist($recommendation);
 
