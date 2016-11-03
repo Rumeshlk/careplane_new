@@ -467,17 +467,20 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="{{ path('package') }}"><i class="fa fa-plus-square fa-fw"></i>Packaging </a>
+                                        <a href="{{ path('package') }}"><i class="fa fa-plus-square fa-fw"></i>Packaging
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="{{ path('laboratory') }}"><i class="fa fa-flask fa-fw"></i>Laboratory </a>
+                                        <a href="{{ path('laboratory') }}"><i class="fa fa-flask fa-fw"></i>Laboratory
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="{{ path('therapist_list') }}"><i class="fa fa-user-md fa-fw"></i>Therapist </a>
+                                        <a href="{{ path('therapist_list') }}"><i class="fa fa-user-md fa-fw"></i>Therapist
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -502,7 +505,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="#"><i class="fa fa-medkit fa-fw"></i>Medicines</a
+                                        <a href="#"><i class="fa fa-medkit fa-fw"></i>Medicines</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -522,21 +525,20 @@
             </div>
         </div>
     </nav>
-    {% for flash_message in app.session.flashBag.get('notice') %}
-        {{ flash_message }}
-    {% endfor %}
+    <div id="page-wrapper">
+        {% for flash_message in app.session.flashBag.get('notice') %}
+            {{ flash_message }}
+        {% endfor %}
 
-    {% for msg in app.session.flashBag.get('success') %}
-        <div id="page-wrapper"
-             style="min-height: 0% !important; border-radius: 0px !important; margin-bottom: 0px !important;">
+        {% for msg in app.session.flashBag.get('success') %}
             <div class="alert alert-success">
                 {{ msg }}
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
 
-    {% block body %}
-    {% endblock %}
+        {% block body %}
+        {% endblock %}
+    </div>
     {% block javascripts %}
         <!-- jQuery -->
         <script src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>

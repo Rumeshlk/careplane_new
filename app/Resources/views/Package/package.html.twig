@@ -1,6 +1,5 @@
 {% extends 'baseadmin.html.twig' %}
 {% block body %}
-<div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
             <h1><a href={{ path('package_create') }}>
@@ -24,7 +23,7 @@
                             <thead>
                             <tr>
                                 <th>id</th>
-                                <th>Name Singular </th>
+                                <th>Name Singular</th>
                                 <th>Name Plural</th>
                                 <th></th>
                                 <th></th>
@@ -38,9 +37,12 @@
                                     <td>{{ packages.pluralName }}</td>
                                     <td class="text-center"><input type="checkbox"></td>
                                     <td class="text-center">
-                                        <a href="{{ path('package_edit', {'id': packages.id}) }}"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a> |
-                                        <a href="{{ path('package_delete', {'id': packages.id}) }}"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a> |
-                                        <a href="{{ path('package_edit', {'id': packages.id}) }}"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a>
+                                        <a href="{{ path('package_edit', {'id': packages.id}) }}"><i
+                                                    class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a> |
+                                        <a href="{{ path('package_delete', {'id': packages.id}) }}"><i
+                                                    class="fa fa-trash fa-lg" aria-hidden="true"></i></a> |
+                                        <a href="{{ path('package_edit', {'id': packages.id}) }}"><i
+                                                    class="fa fa-search fa-lg" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -57,6 +59,6 @@
         <!-- /.row -->
     </div>
     <!-- /#page-wrapper -->
-    {% endblock %}
+{% endblock %}
     {% block stylesheets %}
     {% endblock %}

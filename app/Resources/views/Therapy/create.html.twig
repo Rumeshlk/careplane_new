@@ -1,19 +1,18 @@
 {% extends 'baseadmin.html.twig' %}
 {% block body %}
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Add a New Therapy</h2>
-            </div>
-        </div>
+    <div class="row">
         <div class="col-lg-12">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
-                <div class="panel-heading">
-                    <h4>New Therapy Details</h4>
-                </div>
-                {{ include(':Therapy:_form.html.twig' ,{'submitBtnText' : 'Create'}) }}
-            </div>
+            <h2 class="page-header">Add a New Therapy</h2>
         </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+            <div class="panel-heading">
+                <h4>New Therapy Details</h4>
+            </div>
+            {{ include(':Therapy:_form.html.twig' ,{'submitBtnText' : 'Create'}) }}
+        </div>
+    </div>
     </div>
     <!-- /#page-wrapper -->
 {% endblock %}

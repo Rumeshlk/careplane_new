@@ -1,26 +1,21 @@
 {% extends 'baseadmin.html.twig' %}
 {% block body %}
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <a href="{{ path('patient_list') }}">Back</a>
-                <h2 class="page-header">Patient Details</h2>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <a href="{{ path('patient_list') }}">Back</a>
+            <h2 class="page-header">Patient Details</h2>
         </div>
-
-            <div class="panel-body col-lg-12">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Personal Details
-                        </div>
-                        {{ patient.firstName  }}
+    </div>
+    <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Personal Details
                     </div>
+                    {{ patient.firstName }}
                 </div>
             </div>
-        </div>
-
-
+    </div>
 {% endblock %}
 {% block stylesheets %}
 {% endblock %}
