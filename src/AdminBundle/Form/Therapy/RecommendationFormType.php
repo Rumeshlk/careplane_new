@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Form;
+namespace AdminBundle\Form\Therapy;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -20,7 +20,7 @@ class RecommendationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AdminBundle\Entity\Recommendation'
+            'data_class' => 'AdminBundle\Entity\Therapy\Recommendation'
         ]);
     }
 

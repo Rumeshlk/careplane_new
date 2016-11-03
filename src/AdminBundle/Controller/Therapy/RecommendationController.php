@@ -6,10 +6,10 @@
  * Time: 11:43 PM
  */
 
-namespace AdminBundle\Controller;
+namespace AdminBundle\Controller\Therapy;
 
-use AdminBundle\Entity\Recommendation;
-use AdminBundle\Form\RecommendationFormType;
+use AdminBundle\Entity\Therapy\Recommendation;
+use AdminBundle\Form\Therapy\RecommendationFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,9 +24,9 @@ class RecommendationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $recommendations = $em->getRepository('AdminBundle:Recommendation')->findAll();
+        $recommendations = $em->getRepository('AdminBundle:Therapy\Recommendation')->findAll();
 
-        return $this->render('Recommendation/list.html.twig', ['recommendationList' => $recommendations]);
+        return $this->render('TherapyViews/Recommendation/list.html.twig', ['recommendationList' => $recommendations]);
 
     }
 
@@ -54,7 +54,7 @@ class RecommendationController extends Controller
             return $this->redirectToRoute('recommendation_list');
         }
 
-        return $this->render('Recommendation/create.html.twig', [
+        return $this->render('TherapyViews/Recommendation/create.html.twig', [
             'recommendationForm' => $form->createView()
         ]);
 
@@ -86,7 +86,7 @@ class RecommendationController extends Controller
             return $this->redirectToRoute('recommendation_list');
         }
 
-        return $this->render('Recommendation/edit.html.twig', [
+        return $this->render('TherapyViews/Recommendation/edit.html.twig', [
             'recommendationForm' => $form->createView()
         ]);
 

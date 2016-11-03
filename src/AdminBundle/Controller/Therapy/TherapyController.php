@@ -1,9 +1,9 @@
 <?php
 
-namespace AdminBundle\Controller;
+namespace AdminBundle\Controller\Therapy;
 
-use AdminBundle\Entity\Therapy;
-use AdminBundle\Form\TherapyFormType;
+use AdminBundle\Entity\Therapy\Therapy;
+use AdminBundle\Form\Therapy\TherapyFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,9 +18,9 @@ class TherapyController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $therapyList = $em->getRepository('AdminBundle:Therapy')->findAll();
+        $therapyList = $em->getRepository('AdminBundle:Therapy\Therapy')->findAll();
 
-        return $this->render('Therapy/list.html.twig', ['therapyList' => $therapyList]);
+        return $this->render('TherapyViews/Therapy/list.html.twig', ['therapyList' => $therapyList]);
 
     }
 
@@ -48,7 +48,7 @@ class TherapyController extends Controller
             return $this->redirectToRoute('therapy_list');
         }
 
-        return $this->render('Therapy/create.html.twig', [
+        return $this->render('TherapyViews/Therapy/create.html.twig', [
             'therapyForm' => $form->createView()
         ]);
 
@@ -80,7 +80,7 @@ class TherapyController extends Controller
             return $this->redirectToRoute('therapy_list');
         }
 
-        return $this->render('Therapy/edit.html.twig', [
+        return $this->render('TherapyViews/Therapy/edit.html.twig', [
             'therapyForm' => $form->createView()
         ]);
 

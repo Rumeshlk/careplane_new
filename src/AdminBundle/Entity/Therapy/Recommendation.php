@@ -6,7 +6,7 @@
  * Time: 8:02 PM
  */
 
-namespace AdminBundle\Entity;
+namespace AdminBundle\Entity\Therapy;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
